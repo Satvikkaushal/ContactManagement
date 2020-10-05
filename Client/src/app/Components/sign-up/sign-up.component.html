@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<div class="body">
+  <div class="card" style="width: 21rem;">
+    <div class="container">
+      <h4 class="text-center">Sign Up</h4><br>
+      <form id="form">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" #username="ngModel" ngModel [(ngModel)]="signUpForm.username"
+            name="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+          <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+
+            <div *ngIf="username.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="username.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" [(ngModel)]="signUpForm.password" name="password" id="Password"
+            placeholder="Password" minlength="4" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Confirm Password</label>
+          <input type="password" class="form-control" [(ngModel)]="confirmpassword" name="confirmpassword"
+            id="ConfirmPassword" minlength="4" placeholder="Confirm Password" required>
+        </div>
+        <button type="submit" (click)="SignUp()" class="btn btn-primary">SignUp</button><br><br>
+        <p>Alreadu User? <a routerLink="/signIn">Login here</a></p>
+      </form>
+    </div>
+  </div>
+</div>

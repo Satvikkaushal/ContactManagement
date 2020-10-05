@@ -1,0 +1,99 @@
+<app-navbar></app-navbar>
+<div class="body">
+  <div class="row">
+    <div class="col-3">
+      <app-info></app-info>
+    </div>
+    <div class="col-9">
+      <div>
+        <app-add-contact-form></app-add-contact-form>
+      </div>
+      <div><br>
+        <h3 class="text-center text-white">All Contacts</h3><br>
+        <div class="card">
+          <table class="table table-borderless text-center container">
+            <thead>
+              <tr>
+                <th scope="col">Contact Name</th>
+                <th scope="col">Primary Email</th>
+                <th scope="col">Primary ContactNumber</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <th scope="row">{{user.username}}</th>
+                <td>{{user.email}}</td>
+                <td>{{user.PhoneNumber}}</td>
+                <td><button type="button" class="btn btn-info btn-sm" (click)="getAdditionalInfo(user.id)"
+                    data-toggle="modal" data-target="#exampleModal">View
+                    Contact</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div *ngFor="let user of user" class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Contact Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <div><b>Name : </b>{{user.username}}</div><br>
+                <div><b>Primary Contact : </b>{{user.PhoneNumber}}</div><br>
+                <div><b>Primary Email : </b>{{user.email}}</div><br><br>
+                <table class="table text-center">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">#Id</th>
+                      <th scope="col">AlternateEmails</th>
+                      <th scope="col">Alternate Numbers</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{user.id}}</td>
+                      <td>
+                        <div *ngFor="let email of Emails">{{email.AlternateEmail}}</div>
+                      </td>
+                      <td>
+                        <div *ngFor="let number of Numbers">{{number.AlternateNo}}</div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <div class="input-group " style="width: 300px;">
+                    <input type="text" class="form-control" [(ngModel)]="alternateEmail.email" name="email"
+                      placeholder="Alternate Email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" (click)="updateContact(user.id)" type="button"
+                        data-dismiss="modal">Add</button>
+                    </div>
+                  </div><br>
+                  <div class="input-group " style="width: 300px;">
+                    <input type="text" class="form-control" [(ngModel)]="alternateNumber.Number" name="Number"
+                      placeholder="Alternate PhoneNumber">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" (click)="updateContact(user.id)" type="button"
+                        data-dismiss="modal">Add</button>
+                    </div>
+                  </div><br>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

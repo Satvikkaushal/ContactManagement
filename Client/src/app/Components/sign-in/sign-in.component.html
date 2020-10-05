@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="body">
+    <div class="card" style="width: 21rem;">
+        <div class="container">
+            <h4 class="text-center">Login</h4><br>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" #username="ngModel" ngModel
+                        [(ngModel)]="signInfForm.username" name="username" placeholder="Enter email" required>
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+
+                        <div *ngIf="username.errors.required">
+                            username name is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" [(ngModel)]="signInfForm.password" name="password"
+                        placeholder="Password">
+                </div>
+                <button type="submit" (click)="signIn()" class="btn btn-primary">Submit</button><br><br>
+                <p>Not an User ? <a routerLink="/signUp">Register</a></p>
+            </form>
+        </div>
+    </div>
+</div>
