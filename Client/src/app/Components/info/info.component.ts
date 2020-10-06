@@ -12,7 +12,6 @@ export class InfoComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.authService.isSignedIn()
-    console.log(this.user)
   }
 
 }

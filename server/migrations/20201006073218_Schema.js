@@ -1,4 +1,3 @@
-
 exports.up = function (knex, Promise) {
     return knex.schema.createTable('userInfo', function (table) {
         table.string('username').notNullable()
@@ -19,11 +18,11 @@ exports.up = function (knex, Promise) {
             table.increments('id').primary()
             table.string('username').notNullable()
             table.string('password').notNullable()
+            table.string('name').notNullable()
         })
 };
 
-
 exports.down = function (knex, Promise) {
     return knex.schema.dropTableIfExists('userAlternateEmail').dropTableIfExists('userAlternateNumbers')
-        .dropTableIfExists('userInfo').dropTableIfExists('Admins').dropTableIfExists('knex_migrations_lock').dropTableIfExists('knex_migrations');
+        .dropTableIfExists('userInfo').dropTableIfExists('Admins');
 };

@@ -21,8 +21,8 @@ export class SignUpComponent implements OnInit {
       this.dataservice.signUp(this.signUpForm)
     }
     else {
-      alert("Both should have same password")
-      window.location.reload()
+      alert("Both Password and confirm Password should have same password")
+      this.ngOnInit();
     }
   }
 

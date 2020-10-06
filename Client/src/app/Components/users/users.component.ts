@@ -21,13 +21,13 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     return this.dataService.getUsers()
-      .subscribe(data => { this.users = data; console.log(this.users) })
+      .subscribe(data => { this.users = data; })
   }
 
   getAdditionalInfo(userId) {
-    this.dataService.getAdditionalNumbers(userId).subscribe(data => { this.Numbers = data; console.log(data) });
-    this.dataService.getAdditionalEmails(userId).subscribe(data => { this.Emails = data; console.log(data) });
-    this.dataService.getuserById(userId).subscribe(data => { this.user = data; console.log(data) });
+    this.dataService.getAdditionalNumbers(userId).subscribe(data => { this.Numbers = data; });
+    this.dataService.getAdditionalEmails(userId).subscribe(data => { this.Emails = data; });
+    this.dataService.getuserById(userId).subscribe(data => { this.user = data; });
   }
 
 

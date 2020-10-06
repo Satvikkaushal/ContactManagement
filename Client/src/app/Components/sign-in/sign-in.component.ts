@@ -20,10 +20,11 @@ export class SignInComponent implements OnInit {
       this.router.navigate(['/users']);
     }
   }
-  signIn() {
+  async signIn() {
+
     console.log(this.signInfForm)
-    this.dataService.signIn(this.signInfForm);
-    window.location.reload();
+    await this.dataService.signIn(this.signInfForm);
+    window.location.reload()
   }
 
 }

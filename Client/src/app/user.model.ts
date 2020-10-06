@@ -7,7 +7,6 @@ export class AN {
     Number: any;
 
 }
-
 export class AE {
     id: any;
     email: any;
